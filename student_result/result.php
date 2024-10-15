@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Card</title>
+    <title>Student Result</title>
     <style>
         *{
             padding: 0;
@@ -23,7 +23,6 @@
         }
         #result-card{
             max-width: 500px;
-            min-height: 200px;
             padding: 30px 20px;
             background-color: aliceblue;
             border-radius: 20px;
@@ -72,7 +71,16 @@
             cursor: pointer;
         }
         .submit{
-            background: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+            background: linear-gradient(to right bottom, #850c0c, #990b1d, #ad0a2e, #c10c40, #d41155);
+        }
+        .error{
+            color: red;
+            font-weight: bold;
+        }
+        .success{
+            color:forestgreen;
+            font-weight: bold;
+            font-size: large;
         }
     </style>
 </head>
@@ -80,15 +88,72 @@
     <div id="result-area">
         <div id="result-card">
             <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $resultRequest = htmlspecialchars($_POST['resultRequest']);
+                function calculateResult($markBangla,$markEnglish,$markMath,$markScience,$markHistory){
+                    $totalMarks = $markBangla + $markEnglish + $markMath + $markScience + $markHistory;
+                    echo "Total Marks: ".$totalMarks."<br>";
+                    $avgMarks = $totalMarks/5;
+                    echo "Average Marks: ".$avgMarks."<br>";
+                    echo "Grade: ";
+                    switch ($avgMarks) {
+                        case ($avgMarks>=80):
+                            echo "A+";
+                            break;
+                        case ($avgMarks>=70):
+                            echo "A";
+                            break;
+                        case ($avgMarks>=60):
+                            echo "A-";
+                            break;
+                        case ($avgMarks>=50):
+                            echo "B";
+                            break;
+                        case ($avgMarks>=40):
+                            echo "C";
+                            break;
+                        case ($avgMarks>=33):
+                            echo "D";
+                            break;
+                        default:
+                            echo "F";
+                            break;
+                    }
                 }
-                if (!empty($resultRequest)) {
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $markBangla = $_POST['bangla'];
+                    $markEnglish = $_POST['english'];
+                    $markMath = $_POST['math'];
+                    $markScience = $_POST['science'];
+                    $markHistory = $_POST['history'];
+
+                    if(empty($markBangla)||empty($markEnglish)||empty($markMath)||empty($markScience)||empty($markHistory)){
+                
             ?>
-            Total Marks: 232 <br>
-            Average Marks: 46.4 <br>
-            Grade: C
+                        <h2 class="error">Empty mark Marks!!!</h2>
             <?php
+                    }else if((is_numeric($markBangla)!=1)||(is_numeric($markEnglish)!=1)||(is_numeric($markMath)!=1)||(is_numeric($markScience)!=1)||(is_numeric($markHistory)!=1)){
+            ?>
+                        <h2 class="error">Invalid mark Marks!!!</h2>
+            <?php
+                    }else{
+                        if(($markBangla<0) || ($markBangla>100) || ($markEnglish<0) || ($markEnglish>100) || ($markMath<0) || ($markMath>100) || ($markScience<0) || ($markScience>100) || ($markHistory<0) || ($markHistory>100)){
+            ?>
+                            <h2 class="error">Marks should be between 0 to 100.</h2>
+            <?php
+                        }else{
+                            if(($markBangla<33)||($markEnglish<33)||($markMath<33)||($markScience<33)||($markHistory<33)){
+            ?>
+                            <h1 class="error">Result: FAIL</h1>
+            <?php                    
+                            }else{
+            ?>
+                                <div class="success">
+                                    <?php calculateResult($markBangla,$markEnglish,$markMath,$markScience,$markHistory);?>
+                                </div>            
+            <?php
+                            }
+                        }
+                    }
+
                }else{
             ?>
             <h1>Please Input Marks</h1>
@@ -96,26 +161,25 @@
                 <div id="result-form">
                     <div class="form-cols">
                         <label for="Bangla">Bangla</label>
-                        <input type="number" name="bangla" id="" placeholder="Numbers Only">
+                        <input type="text" name="bangla" id="" placeholder="Numbers Only">
                     </div>
                     <div class="form-cols">
                         <label for="English">English</label>
-                        <input type="number" name="english" id="" placeholder="Numbers Only">
+                        <input type="text" name="english" id="" placeholder="Numbers Only">
                     </div>
                     <div class="form-cols">
                         <label for="Math">Math</label>
-                        <input type="number" name="math" id="" placeholder="Numbers Only">
+                        <input type="text" name="math" id="" placeholder="Numbers Only">
                     </div>
                     <div class="form-cols">
                         <label for="Science">Science</label>
-                        <input type="number" name="science" id="" placeholder="Numbers Only">
+                        <input type="text" name="science" id="" placeholder="Numbers Only">
                     </div>
                     <div class="form-cols">
                         <label for="History">History</label>
-                        <input type="number" name="history" id="" placeholder="Numbers Only">
+                        <input type="text" name="history" id="" placeholder="Numbers Only">
                     </div>
                     <div class="form-cols">
-                        <input type="hidden" id="" name="resultRequest" value="yes">
                         <div id="form-buttons">
                             <button type="submit" class="submit">Show Result</button>
                         </div>
