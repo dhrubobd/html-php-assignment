@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Card</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            font-size: 16px;
+            color: #000000;
+            line-height: 25px;
+            font-family: Arial, Helvetica, sans-serif
+        }
+        #reg-area{
+            display: flex;
+            justify-content: center; /*Centering Horizentally*/
+            align-items: center; /*Centering Vertically*/
+            min-height: 100vh;
+            background: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        }
+        #reg-card{
+            max-width: 500px;
+            min-height: 200px;
+            padding: 30px 20px;
+            background-color: aliceblue;
+            border-radius: 20px;
+        }
+        #reg-card h1{
+            text-align: center;
+            font-weight: normal;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        #reg-form{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        .form-cols{
+            max-width: 230px;
+            margin: 10px 10px;
+        }
+        label{
+            font-weight: bold;
+            line-height: 30px;
+        }
+        input{
+            padding: 7px 10px;
+            width: 90%;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+        input:focus {
+            background-color: #00bf72;
+            color: aliceblue;
+        }
+        .radio-input{
+            width: 20px;
+        }
+        #form-buttons{
+            margin-top: 20px;
+        }
+        #form-buttons button{
+            color: floralwhite;
+            padding: 8px 30px;
+            font-weight: 400;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        .cancel{
+            background-color: crimson;
+        }
+        .submit{
+            background: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        }
+    </style>
+</head>
+<body>
+    <div id="reg-area">
+        <div id="reg-card">
+            <h1>Registration</h1>
+            <form action="" >
+                <div id="reg-form">
+                    <div class="form-cols">
+                        <label for="Full Name">Full Name</label>
+                        <input type="text" name="full_name" id="" placeholder="Enter your name">
+                    </div>
+                    <div class="form-cols">
+                        <label for="User Name">Username</label>
+                        <input type="text" name="username" id="" placeholder="Enter your username">
+                    </div>
+                    <div class="form-cols">
+                        <label for="Email">Email</label>
+                        <input type="email" name="email" id="" placeholder="Enter your email">
+                    </div>
+                    <div class="form-cols">
+                        <label for="Phone Number">Phone Number</label>
+                        <input type="tel" name="phone" id="" placeholder="Enter your number">
+                    </div>
+                    <div class="form-cols">
+                        <label for="Passowrd">Password</label>
+                        <input type="password" name="password" id="" placeholder="Enter your password">
+                    </div>
+                    <div class="form-cols">
+                        <label for="Confirm Passowrd">Confirm Password</label>
+                        <input type="password" name="confirm_password" id="" placeholder="Confirm your password">
+                    </div>
+                    <div class="form-cols">
+                        <p><strong>Gender</strong></p>
+                        <input type="radio" name="gender" value="Male" class="radio-input"><label for="Male">Male</label>
+                        <input type="radio" name="gender" value="Female" class="radio-input"><label for="Female">Female</label>
+                        <input type="radio" name="gender" value="Other" class="radio-input"><label for="Female">Other</label>
+                        <div id="form-buttons">
+                            <button type="reset" class="cancel">Cancel</button> <button type="submit" class="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
