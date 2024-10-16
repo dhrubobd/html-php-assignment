@@ -22,7 +22,7 @@
             background: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
         }
         #reg-card{
-            max-width: 500px;
+            max-width: 800px;
             min-height: 200px;
             padding: 30px 20px;
             background-color: aliceblue;
@@ -32,7 +32,7 @@
             text-align: center;
             font-weight: normal;
             font-size: 25px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         #reg-form{
             display: flex;
@@ -40,32 +40,39 @@
             align-content: space-between;
         }
         .form-cols{
-            max-width: 230px;
-            margin: 10px 10px;
+            max-width: 380px;
+            padding: 10px 10px;
         }
-        label{
+        .form-cols label{
             font-weight: bold;
-            line-height: 30px;
+            line-height: 40px;
+            width: 150px;
+            display: block;
+            float: left;
         }
-        input{
+        .form-cols input{
             padding: 7px 10px;
-            width: 90%;
             border: 1px solid gray;
             border-radius: 5px;
         }
-        input:focus {
+        .form-cols input:focus {
             background-color: #00bf72;
             color: aliceblue;
         }
         .radio-input{
             width: 20px;
+            margin-top: 15px;
         }
         #form-buttons{
-            margin-top: 20px;
+            padding: 20px 10px 0 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
         #form-buttons button{
             color: floralwhite;
             padding: 8px 30px;
+            margin: 0 10px;
             font-weight: 400;
             border: none;
             border-radius: 7px;
@@ -110,13 +117,13 @@
                         <input type="password" name="confirm_password" id="" placeholder="Confirm your password">
                     </div>
                     <div class="form-cols">
-                        <p><strong>Gender</strong></p>
-                        <input type="radio" name="gender" value="Male" class="radio-input"><label for="Male">Male</label>
-                        <input type="radio" name="gender" value="Female" class="radio-input"><label for="Female">Female</label>
-                        <input type="radio" name="gender" value="Other" class="radio-input"><label for="Female">Other</label>
-                        <div id="form-buttons">
-                            <button type="reset" class="cancel">Cancel</button> <button type="submit" class="submit">Submit</button>
-                        </div>
+                        <label for="Gender">Gender</label>
+                            <input type="radio" name="gender" value="Male" class="radio-input"><span> Male </span>
+                            <input type="radio" name="gender" value="Female" class="radio-input"><span> Female </span>
+                            <input type="radio" name="gender" value="Other" class="radio-input"><span> Other</span>
+                    </div>
+                    <div id="form-buttons">
+                        <button type="reset" class="cancel">Cancel</button> <button type="submit" class="submit">Submit</button>
                     </div>
                 </div>
             </form>
