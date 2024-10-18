@@ -128,11 +128,11 @@
                     if(empty($markBangla)||empty($markEnglish)||empty($markMath)||empty($markScience)||empty($markHistory)){
                 
             ?>
-                        <h2 class="error">Empty mark Marks!!!</h2>
+                        <h2 class="error">Empty Marks Submitted!!!</h2>
             <?php
                     }else if((is_numeric($markBangla)!=1)||(is_numeric($markEnglish)!=1)||(is_numeric($markMath)!=1)||(is_numeric($markScience)!=1)||(is_numeric($markHistory)!=1)){
             ?>
-                        <h2 class="error">Invalid mark Marks!!!</h2>
+                        <h2 class="error">Invalid Marks!!!</h2>
             <?php
                     }else{
                         if(($markBangla<0) || ($markBangla>100) || ($markEnglish<0) || ($markEnglish>100) || ($markMath<0) || ($markMath>100) || ($markScience<0) || ($markScience>100) || ($markHistory<0) || ($markHistory>100)){
